@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1726182683, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: AOTGenerationConfig
+  m_EditorClassIdentifier: 
+  automateBeforeBuilds: 1
+  deleteDllAfterBuilds: 1
+  AutomateForAllAOTPlatforms: 1
+  automateForPlatforms: 090000000d000000
+  lastScan: 638665817862491710
+  supportSerializedTypes:
+  - TypeName: Player.PlayerResources.ResourceType, Assembly-CSharp
+    IsCustom: 1
+    Emit: 1
+  - TypeName: Player.PlayerResources.AmountTransaction, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Single, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: Revel.Gacha.FullNode`1[[Player.PlayerResources.ITransaction, Assembly-CSharp]],
+      Revel.Gacha
+    IsCustom: 0
+    Emit: 1
+  - TypeName: Revel.Gacha.INode`1[[Player.PlayerResources.ITransaction, Assembly-CSharp]],
+      Revel.Gacha
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Int32, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: Player.PlayerResources.ITransaction, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[Revel.Gacha.INode`1[[Player.PlayerResources.ITransaction,
+      Assembly-CSharp]], Revel.Gacha]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[DebugUtil.OptionCategory, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[DebugUtil.OptionEntry, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[RewardSystem.Gacha.WeightedTransaction,
+      Assembly-CSharp]], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Object, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: DebugUtil.OptionCategory, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: DebugUtil.OptionDelegate, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: DebugUtil.OptionEntry, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: Player.PlayerResources.ResourceType, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.String, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: RewardSystem.Gacha.TransactionNode, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Type, mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Type[], mscorlib
+    IsCustom: 0
+    Emit: 1
+  - TypeName: Player.PlayerResources.VoidTransaction, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: RewardSystem.Gacha.WeightedTransaction, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1

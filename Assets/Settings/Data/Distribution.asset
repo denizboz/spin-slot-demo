@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436913a260a54443aacba4f901623b5f, type: 3}
+  m_Name: Distribution
+  m_EditorClassIdentifier: 
+  Entries:
+  - Lineup:
+      Left: 0
+      Middle: 3
+      Right: 1
+    Percentage: 13
+  - Lineup:
+      Left: 3
+      Middle: 3
+      Right: 2
+    Percentage: 13
+  - Lineup:
+      Left: 4
+      Middle: 4
+      Right: 0
+    Percentage: 13
+  - Lineup:
+      Left: 3
+      Middle: 1
+      Right: 0
+    Percentage: 13
+  - Lineup:
+      Left: 1
+      Middle: 0
+      Right: 4
+    Percentage: 13
+  - Lineup:
+      Left: 0
+      Middle: 0
+      Right: 0
+    Percentage: 9
+  - Lineup:
+      Left: 1
+      Middle: 1
+      Right: 1
+    Percentage: 8
+  - Lineup:
+      Left: 2
+      Middle: 2
+      Right: 2
+    Percentage: 7
+  - Lineup:
+      Left: 3
+      Middle: 3
+      Right: 3
+    Percentage: 6
+  - Lineup:
+      Left: 4
+      Middle: 4
+      Right: 4
+    Percentage: 5
+  _totalPercentage: 100

@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: cbd0c1f1a55c74eb4a820968828a9214, type: 3}
+    - {fileID: 102900000, guid: eff33ea7be89f40bbab4dd1f02aab042, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 14d91b10342b34d52aa05c996e2c998e, type: 3}
+  - {fileID: 21300000, guid: 35d508e23920c4da19bd645c985f6b2e, type: 3}
+  - {fileID: 21300000, guid: 6f51a0437167d47bdb22a5600b2dd979, type: 3}
+  - {fileID: 21300000, guid: 816b4e73e27124ec6b90c10bd0efce94, type: 3}
+  - {fileID: 21300000, guid: 0214253648d054a689be5bd5819728e0, type: 3}
+  - {fileID: 21300000, guid: ee1bf9465ea26458ca886431cb82612c, type: 3}
+  - {fileID: 21300000, guid: 10060cd6f95704dbb90e3edefdca05be, type: 3}
+  - {fileID: 21300000, guid: 9244cb78be7754a82b9638d426696069, type: 3}
+  - {fileID: 21300000, guid: 0f602ec8c3ebd437c89e56b831730a5f, type: 3}
+  - {fileID: 21300000, guid: 5cf51069c99654e80be01d14c058d3db, type: 3}
+  - {fileID: 21300000, guid: 09a6c02ae334a42a4a6560f50d340c1f, type: 3}
+  - {fileID: 21300000, guid: bb9e1c9bf151b4a0e956bd9bcdbfcfb3, type: 3}
+  - {fileID: 21300000, guid: 33c0557c3d42c4509a5b0b1843a20c1a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Slot_gradient
+  - Bonus_00_blur
+  - Seven_00_blur
+  - Jackpot_00_blur
+  - A_00_blur
+  - Bonus_00
+  - slot_window
+  - Wild_00_blur
+  - A_00
+  - Seven_00
+  - Slot_back
+  - Jackpot_00
+  - Wild_00
+  m_RenderDataMap: {}
+  m_Tag: SpriteAtlas
+  m_IsVariant: 0

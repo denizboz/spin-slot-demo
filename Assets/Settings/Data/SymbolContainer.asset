@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5835a06fa6f0411a96f334624475e1af, type: 3}
+  m_Name: SymbolContainer
+  m_EditorClassIdentifier: 
+  _symbolDictionary:
+    _keyValuePairs:
+    - Key: 0
+      Value:
+        ClearSprite: {fileID: 21300000, guid: 0f602ec8c3ebd437c89e56b831730a5f, type: 3}
+        BlurSprite: {fileID: 21300000, guid: 0214253648d054a689be5bd5819728e0, type: 3}
+    - Key: 1
+      Value:
+        ClearSprite: {fileID: 21300000, guid: ee1bf9465ea26458ca886431cb82612c, type: 3}
+        BlurSprite: {fileID: 21300000, guid: 35d508e23920c4da19bd645c985f6b2e, type: 3}
+    - Key: 2
+      Value:
+        ClearSprite: {fileID: 21300000, guid: 5cf51069c99654e80be01d14c058d3db, type: 3}
+        BlurSprite: {fileID: 21300000, guid: 6f51a0437167d47bdb22a5600b2dd979, type: 3}
+    - Key: 3
+      Value:
+        ClearSprite: {fileID: 21300000, guid: 33c0557c3d42c4509a5b0b1843a20c1a, type: 3}
+        BlurSprite: {fileID: 21300000, guid: 9244cb78be7754a82b9638d426696069, type: 3}
+    - Key: 4
+      Value:
+        ClearSprite: {fileID: 21300000, guid: bb9e1c9bf151b4a0e956bd9bcdbfcfb3, type: 3}
+        BlurSprite: {fileID: 21300000, guid: 816b4e73e27124ec6b90c10bd0efce94, type: 3}
