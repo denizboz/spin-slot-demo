@@ -1,7 +1,7 @@
 using UnityEngine;
-using View;
+using Util;
 
-namespace Util {
+namespace Core {
     [CreateAssetMenu(fileName = "SymbolContainer", menuName = "Data/Symbol Container")]
     public class SymbolContainerSO : ScriptableObject {
         [SerializeField] private SerializedDictionary<SymbolType, SpriteEntry> _symbolDictionary;
