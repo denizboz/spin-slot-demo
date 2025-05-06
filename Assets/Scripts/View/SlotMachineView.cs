@@ -7,51 +7,48 @@ using Random = UnityEngine.Random;
 
 namespace View {
     public class SlotMachineView : MonoBehaviour {
-        [Header("Wheels")]
-        [SerializeField] private SlotWheelView _leftWheel;
-        [SerializeField] private SlotWheelView _middleWheel;
-        [SerializeField] private SlotWheelView _rightWheel;
-
-        [SerializeField] private float _leftSpinTime = 1f;
-        [SerializeField] private float _middleSpinTime = 1f;
-        [SerializeField] private float _rightSpinTime = 2f;
+        [SerializeField] private WheelSpinner _leftSpinner;
+        [SerializeField] private WheelSpinner _middleSpinner;
+        [SerializeField] private WheelSpinner _rightSpinner;
         
-        [Header("Spin Delays")]
-        [SerializeField] private float _leftSpinDelay = 0.1f;
-        [SerializeField] private float _middleSpinDelay = 0.1f;
-        [SerializeField] private float _rightSpinDelay = 0.2f;
-        
-        [Header("Debug")]
         [SerializeField] private Lineup _debugLineup;
-        [SerializeField] private bool _setRandomLineup;
         
+        private Lineup _currentLineup;
         private bool _isSpinning;
         
-
-        [Button(ButtonSizes.Large)]
-        private void InitiateSpin() {
+        
+        [Button]
+        private void SetRandomLineup() {
             if (!Application.isPlaying) return;
-            Spin().Forget();
+            _debugLineup.Left = (SymbolType)Random.Range(0, 5);
+            _debugLineup.Middle = (SymbolType)Random.Range(0, 5);
+            _debugLineup.Right = (SymbolType)Random.Range(0, 5);
         }
-
-        private async UniTask Spin() {
+        
+        public UniTask InitiateSpin() {
+            return Spin();
+        }
+        
+        public async UniTask Spin() {
             if (_isSpinning) return;
             _isSpinning = true;
 
-            if (_setRandomLineup) {
-                _debugLineup.Left = (SymbolType)Random.Range(0, 5);
-                _debugLineup.Middle = (SymbolType)Random.Range(0, 5);
-                _debugLineup.Right = (SymbolType)Random.Range(0, 5);
-            }
-            
-            await UniTask.Delay(TimeSpan.FromSeconds(_leftSpinDelay));
-            await _leftWheel.Spin(_debugLineup.Left, _leftSpinTime);
-            await UniTask.Delay(TimeSpan.FromSeconds(_middleSpinDelay));
-            await _middleWheel.Spin(_debugLineup.Middle, _middleSpinTime);
-            await UniTask.Delay(TimeSpan.FromSeconds(_rightSpinDelay));
-            await _rightWheel.Spin(_debugLineup.Right, _rightSpinTime);
+            await _leftSpinner.Spin(_debugLineup.Left);
+            await _middleSpinner.Spin(_debugLineup.Middle);
+            await _rightSpinner.Spin(_debugLineup.Right);
             
             _isSpinning = false;
+        }
+        
+        [Serializable]
+        private class WheelSpinner {
+            [SerializeField] private SlotWheelView _view;
+            [SerializeField] private WheelSpinParams _spinParams;
+            
+            public async UniTask Spin(SymbolType target) {
+                _spinParams.Target = target;
+                await _view.Spin(_spinParams);
+            }
         }
     }
 }

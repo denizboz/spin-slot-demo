@@ -218,20 +218,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ea4aba792c4c5991e800fbdac9779c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftWheel: {fileID: 1129975053366409815}
-  _middleWheel: {fileID: 5067074387139399122}
-  _rightWheel: {fileID: 5067074386689665024}
-  _leftSpinTime: 1
-  _middleSpinTime: 1
-  _rightSpinTime: 2
-  _leftSpinDelay: 0.1
-  _middleSpinDelay: 0.1
-  _rightSpinDelay: 0.2
+  _leftSpinner:
+    _view: {fileID: 1129975053366409815}
+    _spinParams:
+      Target: 0
+      Duration: 1
+      Delay: 0.1
+      Ease: 1
+  _middleSpinner:
+    _view: {fileID: 5067074387139399122}
+    _spinParams:
+      Target: 0
+      Duration: 1.25
+      Delay: 0.1
+      Ease: 1
+  _rightSpinner:
+    _view: {fileID: 5067074386689665024}
+    _spinParams:
+      Target: 0
+      Duration: 2.5
+      Delay: 0.1
+      Ease: 6
   _debugLineup:
     Left: 2
     Middle: 3
     Right: 4
-  _setRandomLineup: 0
 --- !u!1 &4037844459179258419
 GameObject:
   m_ObjectHideFlags: 0
