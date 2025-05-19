@@ -5,6 +5,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Util;
+using Zenject;
 
 namespace View {
     public class SlotWheelView : MonoBehaviour {
@@ -34,24 +35,17 @@ namespace View {
         private int FullSequenceLength => _sequenceLength + _endOffset;
 
 
+        [Inject]
+        private void Inject(SymbolSequenceGenerator sequenceGenerator) {
+            _sequenceGenerator = sequenceGenerator;
+        }
+        
         private void Start() {
             CreateScroller();
             CreateSymbols();
-            _sequenceGenerator = new SymbolSequenceGenerator(_endOffset); // TODO: Inject
             _scrollerInitialPos = _scroller.position;
             _updatePointY = _scrollerInitialPos.y - _symbolHeight;
             _jumpHeight = _symbolCount * _symbolHeight;
-        }
-
-        public async UniTask Spin(SymbolType targetSymbol, float duration, Ease ease = Ease.Linear) {
-            _rollIndex = 0;
-            _updatePointY = _scrollerInitialPos.y - _symbolHeight;
-            _sequence = _sequenceGenerator.Generate(targetSymbol, _sequenceLength);
-            var target = _scrollerInitialPos + FullSequenceLength * _symbolHeight * Vector3.down;
-            _symbols.ChangeCollectionParent(_scroller);
-            await _scroller.DOMove(target, duration).SetEase(ease).OnUpdate(OnUpdate).ToUniTask();
-            _symbols.ChangeCollectionParent(transform);
-            _scroller.position = _scrollerInitialPos;
         }
 
         public async UniTask Spin(WheelSpinParams spinParams) {
@@ -85,10 +79,11 @@ namespace View {
 
         private void CreateSymbols() {
             _symbols = new Queue<SymbolView>(_symbolCount);
-            var startPos = transform.position + _symbolCount * _symbolHeight / 2f * Vector3.up -
-                           _symbolHeight / 2f * Vector3.up;
+            var startPos = transform.position + _symbolCount * _symbolHeight / 2f * Vector3.up - _symbolHeight / 2f * Vector3.up;
+            
             for (var i = _symbolCount - 1; i >= 0; i--) {
                 var symbol = Instantiate(_symbolPrefab, transform);
+                // set symbol sprite
                 symbol.transform.position = startPos + i * _symbolHeight * Vector3.down;
                 _symbols.Enqueue(symbol);
             }
