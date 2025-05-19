@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -20,6 +21,10 @@ namespace Util {
                 if (predicate != null && !predicate(enumerator.Current)) continue;
                 enumerator.Current.transform.SetParent(parent, true);
             }
+        }
+        
+        public static bool Equals(this Lineup lineup, Lineup lineup2) {
+            return lineup.Equals(lineup2);
         }
     }
 }

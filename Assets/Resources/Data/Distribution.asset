@@ -17,50 +17,50 @@ MonoBehaviour:
       Left: 0
       Middle: 3
       Right: 1
-    Percentage: 13
+    Weight: 13
   - Lineup:
       Left: 3
       Middle: 3
       Right: 2
-    Percentage: 13
+    Weight: 13
   - Lineup:
       Left: 4
       Middle: 4
       Right: 0
-    Percentage: 13
+    Weight: 13
   - Lineup:
       Left: 3
       Middle: 1
       Right: 0
-    Percentage: 13
+    Weight: 13
   - Lineup:
       Left: 1
       Middle: 0
       Right: 4
-    Percentage: 13
+    Weight: 13
   - Lineup:
       Left: 0
       Middle: 0
       Right: 0
-    Percentage: 9
+    Weight: 9
   - Lineup:
       Left: 1
       Middle: 1
       Right: 1
-    Percentage: 8
+    Weight: 8
   - Lineup:
       Left: 2
       Middle: 2
       Right: 2
-    Percentage: 7
+    Weight: 7
   - Lineup:
       Left: 3
       Middle: 3
       Right: 3
-    Percentage: 6
+    Weight: 6
   - Lineup:
       Left: 4
       Middle: 4
       Right: 4
-    Percentage: 5
-  _totalPercentage: 100
+    Weight: 5
+  _totalWeight: 100

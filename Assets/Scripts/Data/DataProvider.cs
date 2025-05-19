@@ -24,6 +24,10 @@ namespace Data {
             Initialize();
         }
 
+        public bool IsOkay() {
+            return UnityEngine.Random.value < 0.5f;
+        }
+        
         private void Initialize() {
             _distPath = Path.Combine(Application.persistentDataPath, DistFileName);
             _indexPath = Path.Combine(Application.persistentDataPath, IndexFileName);
