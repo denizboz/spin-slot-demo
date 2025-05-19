@@ -1,42 +1,35 @@
 using System;
 using Core;
-using Cysharp.Threading.Tasks;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Cysharp.Threading.Tasks;
+using Data;
+using Zenject;
 
 namespace View {
     public class SlotMachineView : MonoBehaviour {
         [SerializeField] private WheelSpinner _leftSpinner;
         [SerializeField] private WheelSpinner _middleSpinner;
         [SerializeField] private WheelSpinner _rightSpinner;
-        
-        [SerializeField] private Lineup _debugLineup;
-        
-        private Lineup _currentLineup;
+
+        private DataProvider _dataProvider;
         private bool _isSpinning;
-        
-        
-        [Button]
-        private void SetRandomLineup() {
-            if (!Application.isPlaying) return;
-            _debugLineup.Left = (SymbolType)Random.Range(0, 5);
-            _debugLineup.Middle = (SymbolType)Random.Range(0, 5);
-            _debugLineup.Right = (SymbolType)Random.Range(0, 5);
-        }
-        
-        public UniTask InitiateSpin() {
-            return Spin();
+
+
+        [Inject]
+        private void Inject(DataProvider dataProvider) {
+            _dataProvider = dataProvider;
         }
         
         public async UniTask Spin() {
             if (_isSpinning) return;
             _isSpinning = true;
 
-            await _leftSpinner.Spin(_debugLineup.Left);
-            await _middleSpinner.Spin(_debugLineup.Middle);
-            await _rightSpinner.Spin(_debugLineup.Right);
+            var currentLineup = _dataProvider.CurrentLineup;
+            await _leftSpinner.Spin(currentLineup.Left);
+            await _middleSpinner.Spin(currentLineup.Middle);
+            await _rightSpinner.Spin(currentLineup.Right);
             
+            _dataProvider.HandleIteration();
             _isSpinning = false;
         }
         

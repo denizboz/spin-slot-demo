@@ -7,7 +7,7 @@ namespace Core {
         A, Bonus, Seven, Wild, Jackpot,
     }
 
-    [System.Serializable]
+    [Serializable]
     public struct Lineup : IEquatable<Lineup> {
         [HorizontalGroup, HideLabel]
         public SymbolType Left;
@@ -15,7 +15,7 @@ namespace Core {
         public SymbolType Middle;
         [HorizontalGroup, HideLabel]
         public SymbolType Right;
-
+        
         public bool Equals(Lineup other) {
             return Left == other.Left && Middle == other.Middle && Right == other.Right;
         }
