@@ -6,6 +6,7 @@ using NUnit.Framework;
 using UnityEngine;
 
 namespace Editor {
+    [TestFixture]
     public class CoreTests {
         private DataProvider _dataProvider;
         private DistributionSO _distribution;
@@ -19,8 +20,6 @@ namespace Editor {
         [Test]
         public void DistributionTest() {
             var type = typeof(DataProvider);
-            var method = type.GetMethod("CreateNewDistribution", BindingFlags.Instance | BindingFlags.NonPublic);
-            method!.Invoke(_dataProvider, null);
             var field = type.GetField("_lineups", BindingFlags.Instance | BindingFlags.NonPublic);
             var lineups = field!.GetValue(_dataProvider) as Lineup[];
 
