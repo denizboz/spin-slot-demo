@@ -12,12 +12,12 @@ namespace Data {
 
         private Lineup[] _lineups;
         private int _currentIndex;
-        
+
         private const string DistFileName = "distribution.dat";
         private const string IndexSaveKey = "last_index";
-        
+
         public Lineup CurrentLineup => _lineups[_currentIndex];
-        
+
 
         public DataProvider(DistributionSO distributionData) {
             _distributionData = distributionData;
@@ -29,11 +29,12 @@ namespace Data {
         private void Initialize() {
             Application.quitting += SaveCurrentIndex;
             LoadCurrentIndex();
-            
+
             if (File.Exists(_distPath)) {
                 LoadCurrentLineups();
                 return;
             }
+
             CreateNewDistribution();
             SaveCurrentLineups();
         }
@@ -42,8 +43,7 @@ namespace Data {
             using var stream = new FileStream(_distPath, FileMode.Create, FileAccess.Write);
             using var writer = new BinaryWriter(stream);
             writer.Write(_lineups.Length);
-            foreach (var lineup in _lineups)
-            {
+            foreach (var lineup in _lineups) {
                 writer.Write((int)lineup.Left);
                 writer.Write((int)lineup.Middle);
                 writer.Write((int)lineup.Right);
@@ -56,20 +56,19 @@ namespace Data {
             var count = reader.ReadInt32();
             _lineups = new Lineup[count];
             for (var i = 0; i < count; i++) {
-                _lineups[i] = new Lineup
-                {
+                _lineups[i] = new Lineup {
                     Left = (SymbolType)reader.ReadInt32(),
                     Middle = (SymbolType)reader.ReadInt32(),
                     Right = (SymbolType)reader.ReadInt32()
                 };
             }
         }
-        
+
         private void CreateNewDistribution() {
             var dataEntries = _distributionData.Entries;
             var lineupCount = dataEntries.Sum(entry => entry.Weight);
             _lineups = new Lineup[lineupCount];
-            
+
             var counter = 0;
             for (var i = 0; i < dataEntries.Count; i++) {
                 for (var j = 0; j < dataEntries[i].Weight; j++) {
@@ -77,28 +76,38 @@ namespace Data {
                 }
             }
 
-            // TODO: change this simple shuffle -- more naturally spread out
-            for (var i = lineupCount - 1; i >= 0; i--) {
-                var j = _random.Next(0, i + 1);
-                (_lineups[j], _lineups[i]) = (_lineups[i], _lineups[j]);
+            // Fisher-Yates Shuffle
+            for (var i = _lineups.Length - 1; i > 0; i--) {
+                var j = _random.Next(i + 1);
+                (_lineups[i], _lineups[j]) = (_lineups[j], _lineups[i]);
+            }
+
+            // Anti-clumping pass (soft post-processing)
+            for (var i = 1; i < _lineups.Length; i++) {
+                if (!_lineups[i].Equals(_lineups[i - 1])) continue;
+                for (var j = i + 1; j < _lineups.Length; j++) {
+                    if (_lineups[j].Equals(_lineups[i])) continue;
+                    (_lineups[i], _lineups[j]) = (_lineups[j], _lineups[i]);
+                    break;
+                }
             }
         }
-        
+
         public void HandleIteration() {
             _currentIndex++;
             _currentIndex %= _lineups.Length;
-            
+
             if (_currentIndex > 0) return;
             CreateNewDistribution();
             SaveCurrentLineups();
         }
-        
+
         private void SaveCurrentIndex() {
-            PlayerPrefs.SetInt(IndexSaveKey,  _currentIndex);
+            PlayerPrefs.SetInt(IndexSaveKey, _currentIndex);
         }
 
         private void LoadCurrentIndex() {
-            _currentIndex =  PlayerPrefs.GetInt(IndexSaveKey, 0);
+            _currentIndex = PlayerPrefs.GetInt(IndexSaveKey, 0);
         }
     }
 }
