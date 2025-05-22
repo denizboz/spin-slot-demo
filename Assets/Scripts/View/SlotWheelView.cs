@@ -62,13 +62,19 @@ namespace View {
 
         private void OnUpdate() {
             if (_scroller.position.y > _updatePointY) return;
-            var symbol = _symbols.Dequeue();
-            var blurred = _rollIndex < _sequenceLength - _symbolCount + _endOffset + 1;
-            var sprite = _container.Get(_sequence[_rollIndex++], blurred);
-            symbol.SetSprite(sprite);
-            symbol.transform.position += _jumpHeight * Vector3.up;
-            _symbols.Enqueue(symbol);
-            _updatePointY -= _symbolHeight;
+            var diff = _updatePointY -  _scroller.position.y;
+            var belowCount = Mathf.Clamp((int)(diff / _symbolHeight) + 1, 0, _symbolCount);
+            
+            // For low frame rates -- tested down to 10 fps
+            for (var i = 0; i < belowCount; i++) {
+                var symbol = _symbols.Dequeue();
+                var blurred = _rollIndex < _sequenceLength - _symbolCount + _endOffset + 1;
+                var sprite = _container.Get(_sequence[_rollIndex++], blurred);
+                symbol.SetSprite(sprite);
+                symbol.transform.position += _jumpHeight * Vector3.up;
+                _symbols.Enqueue(symbol);
+                _updatePointY -= _symbolHeight;
+            }
         }
 
         private void CreateScroller() {
