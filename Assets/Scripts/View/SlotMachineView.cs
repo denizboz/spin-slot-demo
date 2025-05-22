@@ -3,6 +3,7 @@ using Core;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Data;
+using Util;
 using Zenject;
 
 namespace View {
@@ -10,6 +11,8 @@ namespace View {
         [SerializeField] private WheelSpinner _leftSpinner;
         [SerializeField] private WheelSpinner _middleSpinner;
         [SerializeField] private WheelSpinner _rightSpinner;
+        [Space(10)]
+        [SerializeField] private RewardManager _rewardManager;
 
         private DataProvider _dataProvider;
         private bool _isSpinning;
@@ -24,12 +27,13 @@ namespace View {
             if (_isSpinning) return;
             _isSpinning = true;
 
-            var currentLineup = _dataProvider.CurrentLineup;
-            await _leftSpinner.Spin(currentLineup.Left);
-            await _middleSpinner.Spin(currentLineup.Middle);
-            await _rightSpinner.Spin(currentLineup.Right);
+            var lineup = _dataProvider.CurrentLineup;
+            await _leftSpinner.Spin(lineup.Left);
+            await _middleSpinner.Spin(lineup.Middle);
+            await _rightSpinner.Spin(lineup.Right);
             
             _dataProvider.HandleIteration();
+            if (lineup.IsRewardable()) await _rewardManager.PlayRewardAnimation(lineup.Left);
             _isSpinning = false;
         }
         

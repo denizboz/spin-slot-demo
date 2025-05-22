@@ -23,8 +23,8 @@ namespace Util {
             }
         }
         
-        public static bool Equals(this Lineup lineup, Lineup lineup2) {
-            return lineup.Equals(lineup2);
+        public static bool IsRewardable(this Lineup lineup) {
+            return lineup.Left == lineup.Middle && lineup.Left == lineup.Right;
         }
     }
 }
