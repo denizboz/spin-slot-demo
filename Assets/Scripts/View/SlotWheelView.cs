@@ -83,7 +83,8 @@ namespace View {
             
             for (var i = _symbolCount - 1; i >= 0; i--) {
                 var symbol = Instantiate(_symbolPrefab, transform);
-                // set symbol sprite
+                var sprite = _container.Get(Utility.GetRandomSymbol());
+                symbol.SetSprite(sprite);
                 symbol.transform.position = startPos + i * _symbolHeight * Vector3.down;
                 _symbols.Enqueue(symbol);
             }

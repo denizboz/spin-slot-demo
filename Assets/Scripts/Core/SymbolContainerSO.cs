@@ -6,7 +6,7 @@ namespace Core {
     public class SymbolContainerSO : ScriptableObject {
         [SerializeField] private SerializedDictionary<SymbolType, SpriteEntry> _symbolDictionary;
 
-        public Sprite Get(SymbolType type, bool blurred) {
+        public Sprite Get(SymbolType type, bool blurred = false) {
             var entry = _symbolDictionary[type];
             return !blurred ? entry.ClearSprite : entry.BlurSprite;
         }
