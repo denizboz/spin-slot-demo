@@ -1,1 +1,1 @@
-Simple spin slot machine game. IN PROGRESS.
+Simple spin slot machine game.
